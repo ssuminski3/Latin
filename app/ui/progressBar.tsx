@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 type ProgressBarParams = {
     good: number,

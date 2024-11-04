@@ -1,7 +1,5 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-
 export default function Home() {
     return (
         <div className="w-full h-full p-10 m-auto flex justify-center items-center ">

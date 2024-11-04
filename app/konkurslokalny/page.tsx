@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import '@/app/globals.css'
 import Panel from "../ui/panel";
 

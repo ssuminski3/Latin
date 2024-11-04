@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
 import '@/app/globals.css'
 import Question from "@/app/ui/question";
 
