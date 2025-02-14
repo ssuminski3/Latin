@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export default function Home() {
-    const [name, setName] = useState("");
+    const [name] = useState("");
     const [numQuestions, setNumQuestions] = useState(0);
     const [timePerQuestion, setTimePerQuestion] = useState("");
     const [totalTime, setTotalTime] = useState("");
@@ -20,7 +20,7 @@ export default function Home() {
             console.log("Time per Question:", timePerQuestion, "seconds");
         }
     };
-    
+
 
     return (
         <div className="w-full h-full p-10 m-auto flex justify-center items-center">
@@ -35,10 +35,18 @@ export default function Home() {
                     <input
                         type="number"
                         value={numQuestions}
-                        onChange={(e) => setNumQuestions(Number(e.target.value))}
+                        onChange={(e) => {
+                            const value = Number(e.target.value);
+                            if (value >= 0) {
+                                setNumQuestions(value);
+                            } else {
+                                setNumQuestions(0);
+                            }
+                        }}
                         className="bg-slate-500 m-5 rounded-3xl p-3 text-lg w-4/5"
                         placeholder="Wprowadź liczbę pytań"
                         required
+                        min="0"
                     />
 
                     <div className="mt-5 mb-5">

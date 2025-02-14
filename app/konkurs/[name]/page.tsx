@@ -4,9 +4,9 @@ import '@/app/globals.css'
 import Question from "@/app/ui/question";
 
 export default function Home() {
-    const odpowiedzi: string[] = [
+    /*const odpowiedzi: string[] = [
         "Ona", "On", "Ono", "vf", "jff", "hid", "jf", "hduof", "ff", "oik"
-    ]
+    ]*/
     return (
         <div className="w-full h-full p-10 m-auto flex justify-center items-center ">
             <div className="2xl:w-2/5 m-auto text-center">

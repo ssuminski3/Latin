@@ -5,10 +5,6 @@ import '@/app/globals.css';
 import Question from "@/app/ui/question";
 
 export default function Home() {
-    const odpowiedzi: string[] = [
-        "Ona", "On", "Ono", "vf", "jff", "hid", "jf", "hduof", "ff", "oik"
-    ];
-
     // Timer state
     const [timeLeft, setTimeLeft] = useState(10); // Set initial time in seconds (e.g., 10 seconds)
     const timerRef = useRef<NodeJS.Timeout | null>(null);

@@ -25,11 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`bg h-screen`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} bg h-screen`}>
         {children}
       </body>
     </html>
   );
 }
+

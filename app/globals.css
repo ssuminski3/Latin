@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-geist-sans: "Geist Sans", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
+}
+
+body {
+  font-family: var(--font-geist-sans);
+  padding-bottom: 2.5rem;
+}
+
+
 .bg {
     background: linear-gradient(360deg, #4b0082 0%, #220022 10%, #000000 100%);
 }
@@ -9,10 +20,10 @@
 .contain {
     display: block;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+    padding-left: 5rem;
+    margin-bottom: 2rem;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 4rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;

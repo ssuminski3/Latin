@@ -5,7 +5,7 @@ import { Contestant } from "@/app/lib/definitions";
 import Ranking from "@/app/ui/ranking";
 
 export default function Home() {
-  const [contestants, setContestants] = useState<Contestant[]>([
+  const [contestants] = useState<Contestant[]>([
     { name: "Alice", score: 95 },
     { name: "Bob", score: 85 },
     { name: "Charlie", score: 90 },

@@ -9,7 +9,7 @@ export default function Fiszka({ verse, reverse }: FiszkaParams) {
     const [isFlipped, setIsFlipped] = useState(false);
 
     return (
-        <div className="perspective-1000 w-full h-[80vh] mt-10 mb-10">
+        <div className="m-auto perspective-1000 w-3/4 h-[20rem] mt-10 mb-10">
             <div
                 onClick={() => setIsFlipped(!isFlipped)}
                 onKeyDown={(e) => e.key === 'Enter' && setIsFlipped(!isFlipped)}
