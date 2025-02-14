@@ -9,12 +9,13 @@
 
 body {
   font-family: var(--font-geist-sans);
-  padding-bottom: 2.5rem;
 }
 
 
 .bg {
     background: linear-gradient(360deg, #4b0082 0%, #220022 10%, #000000 100%);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .contain {
