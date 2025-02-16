@@ -19,7 +19,7 @@ export default function Home() {
     { name: "Ivy", score: 76 },
     { name: "Jack", score: 91 },
   ]);
-
+  //SELECT * FROM words_to_learn;
   return (
     <div className="w-full h-full p-10 xl:flex m-auto">
       {/* Grid layout for panels and ranking */}
@@ -35,7 +35,7 @@ export default function Home() {
           className="lg:col-start-3 lg:row-start-1 lg:row-span-2 text-3xl text-white rounded-3xl p-10 bg-gradient-to-r from-slate-900 to-slate-950 overflow-hidden"
         >
           <h2 className="mb-5">Ranking</h2>
-          <Ranking contestants={contestants}/>
+          <Ranking contestants={contestants} />
         </div>
       </div>
     </div>
