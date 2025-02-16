@@ -1,25 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Panel from "./ui/panel";
 import { Contestant } from "./lib/definitions";
 import Ranking from "./ui/ranking";
+import { getRanking } from "./lib/get_data";
 
 export default function Home() {
   // Define the initial state for contestants
-  const [contestants] = useState<Contestant[]>([
-    { name: "Alice", score: 95 },
-    { name: "Bob", score: 85 },
-    { name: "Charlie", score: 90 },
-    { name: "Diana", score: 88 },
-    { name: "Eve", score: 80 },
-    { name: "Frank", score: 92 },
-    { name: "Grace", score: 78 },
-    { name: "Hannah", score: 84 },
-    { name: "Ivy", score: 76 },
-    { name: "Jack", score: 91 },
-  ]);
-  //SELECT * FROM words_to_learn;
+  const [contestants, setContestants] = useState<Contestant[]>([]);
+  
+  useEffect(() => {
+      const fetchRanking = async () => {
+        const con = await getRanking();
+        setContestants(con);
+      };
+      fetchRanking();
+    }, []);
+
   return (
     <div className="w-full h-full p-10 xl:flex m-auto">
       {/* Grid layout for panels and ranking */}

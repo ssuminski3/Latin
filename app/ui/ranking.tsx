@@ -14,7 +14,7 @@ export default function Ranking({ contestants }: RankingProps) {
   const sortedContestants = [...contestants].sort((a, b) => b.score - a.score);
   const topTen = sortedContestants.slice(0, 10);
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (!containerRef.current || !rowRef.current) return;
 
     const updateMaxItems = () => {
@@ -42,7 +42,7 @@ export default function Ranking({ contestants }: RankingProps) {
       window.removeEventListener("resize", updateMaxItems);
       resizeObserver.disconnect();
     };
-  }, [contestants]);
+  }, [contestants]);*/
 
   return (
     <div
