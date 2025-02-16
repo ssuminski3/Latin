@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import '@/app/globals.css';
-import Question from "@/app/ui/question";
+//import Question from "@/app/ui/question";
 
 export default function Home() {
     // Timer state
@@ -36,7 +36,7 @@ export default function Home() {
                         Time left: {timeLeft}s
                     </div>
                     
-                    <Question />
+                    {/*<Question />*/}
 
                     <button 
                         className="bg-green-800 p-5 m-10 rounded-3xl w-4/6"

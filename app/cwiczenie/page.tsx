@@ -30,8 +30,8 @@ export default function Home() {
             try {
                 const goodA = await getWord()
                 setGoodAns(goodA)
-                let fetchedFiller: Array<{ latin: string }> = await getFillerWords(goodA);
-                let latinWords: string[] = fetchedFiller.map(item => item.latin)
+                const fetchedFiller: Array<{ latin: string }> = await getFillerWords(goodA);
+                const latinWords: string[] = fetchedFiller.map(item => item.latin)
                 latinWords.push(goodA.latin)
                 setOdpowiedzi(shuffleArray(latinWords));
             } catch (error) {

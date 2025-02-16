@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Contestant } from "../lib/definitions";
 
 type RankingProps = {
@@ -8,7 +8,7 @@ type RankingProps = {
 export default function Ranking({ contestants }: RankingProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
-  const [maxItems, setMaxItems] = useState(10);
+  const [maxItems] = useState(10);
 
   // Sort contestants and take top 10
   const sortedContestants = [...contestants].sort((a, b) => b.score - a.score);

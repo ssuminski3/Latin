@@ -16,7 +16,7 @@ export default function Home() {
             console.log(name)
         }
         insert()
-    }, [name]); // Empty dependency array means it runs only once when component mounts
+    }, []); // Empty dependency array means it runs only once when component mounts
 
     return (
         <div className="w-full h-full p-10 m-auto flex justify-center items-center">
