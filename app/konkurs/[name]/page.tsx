@@ -8,6 +8,7 @@ import { getWordsForCompetition, getFillerWords } from "@/app/lib/get_data";
 import Link from "next/link";
 import { useScore } from "@/app/context/scoreContext";
 import { usePathname } from "next/navigation";
+import LoadingSpinner from "@/app/ui/loadingSpinner";
 
 export default function Home() {
   const { score, setScore } = useScore();
@@ -20,6 +21,7 @@ export default function Home() {
   const [isAnswerChecked, setIsAnswerChecked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [startTime, setStartTime] = useState(Date.now());
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -32,6 +34,7 @@ export default function Home() {
   useEffect(() => {
     if (goodAns.length === 0) return;
     const fetchOptions = async () => {
+      setIsLoading(true);
       try {
         const correctLatin = goodAns[currentIndex].latin;
         const fillerWords = await getFillerWords(correctLatin);
@@ -43,6 +46,9 @@ export default function Home() {
         setStartTime(Date.now());
       } catch (error) {
         console.error("Error fetching filler words:", error);
+      }
+      finally {
+        setIsLoading(false)
       }
     };
     fetchOptions();
@@ -82,53 +88,51 @@ export default function Home() {
   const isLastQuestion = goodAns.length > 0 && currentIndex === goodAns.length - 1;
 
   return (
-    <div className="w-full h-full p-10 m-auto flex justify-center items-center">
+    <div className="w-full h-screen p-10 m-auto flex justify-center items-center">
       <div className="2xl:w-2/5 m-auto text-center">
-        <div className="max-lg:m-10 text-3xl text-white rounded-3xl p-10 sm:p-20 bg-gradient-to-r from-slate-900 to-slate-950">
-          {goodAns.length > 0 ? (
-            <Question
-              odpowiedzi={currentOptions}
-              onAnswer={onAnswer}
-              question={goodAns[currentIndex].polish}
-            />
-          ) : (
-            <p>Ładowanie pytań...</p>
-          )}
-
-          {isAnswerChecked ? (
+        <div className="max-lg:m-10 text-3xl text-white rounded-3xl p-5 bg-gradient-to-r from-slate-900 to-slate-950">
+          {isLoading ?
+            <LoadingSpinner /> :
             <div>
-              <p
-                className={`p-10 text-2xl min-h-[100px] flex items-center justify-center ${
-                  isCorrect ? "text-lime-500" : "text-red-600"
-                }`}
-              >
-                {isCorrect
-                  ? `Poprawna odpowiedź! Score: ${score}`
-                  : `Zła odpowiedź. Poprawna odpowiedź to: ${goodAns[currentIndex].latin}`}
-              </p>
-              {isLastQuestion ? (
-                <Link href={pathname+"/wynik"}>
-                  <button className="bg-green-800 p-1 m-10 rounded-3xl w-4/6">
-                    Zakończ
-                  </button>
-                </Link>
+              <Question
+                odpowiedzi={currentOptions}
+                onAnswer={onAnswer}
+                question={goodAns[currentIndex].polish}
+              />
+
+              {isAnswerChecked ? (
+                <div>
+                  <p
+                    className={`p-10 text-2xl min-h-[100px] flex items-center justify-center ${isCorrect ? "text-lime-500" : "text-red-600"
+                      }`}
+                  >
+                    {isCorrect
+                      ? `Poprawna odpowiedź! Score: ${score}`
+                      : `Zła odpowiedź. Poprawna odpowiedź to: ${goodAns[currentIndex].latin}`}
+                  </p>
+                  {isLastQuestion ? (
+                    <Link href={pathname + "/wynik"}>
+                      <button className="bg-green-800 p-1 m-10 rounded-3xl w-4/6">
+                        Zakończ
+                      </button>
+                    </Link>
+                  ) : (
+                    <button
+                      className="bg-green-800 p-1 m-10 rounded-3xl w-4/6"
+                      onClick={goToNextQuestion}
+                    >
+                      Dalej
+                    </button>
+                  )}
+                </div>
               ) : (
                 <button
                   className="bg-green-800 p-1 m-10 rounded-3xl w-4/6"
-                  onClick={goToNextQuestion}
+                  onClick={checkAnswer}
                 >
-                  Dalej
+                  Sprawdź
                 </button>
-              )}
-            </div>
-          ) : (
-            <button
-              className="bg-green-800 p-1 m-10 rounded-3xl w-4/6"
-              onClick={checkAnswer}
-            >
-              Sprawdź
-            </button>
-          )}
+              )}</div>}
         </div>
       </div>
     </div>

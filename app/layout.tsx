@@ -23,6 +23,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log("LOGGED into layout")
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} bg lg:h-screen`}>

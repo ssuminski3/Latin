@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { insertNewRanking } from "@/app/lib/get_data";
 import { useEffect } from "react";
-
 export default function Home() {
     const { score } = useScore();
     const pathname = usePathname();
@@ -25,7 +24,7 @@ export default function Home() {
                     Twój wynik to: <br></br>
                     <p className="text-9xl m-10">{score}</p>
                     Gratulacje!
-                    <Link href='/'>
+                    <Link href='/' prefetch={false}>
                         <button className="bg-green-800 p-1 m-10 rounded-3xl w-4/6">
                             Wróć na stronę główną
                         </button>

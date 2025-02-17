@@ -9,7 +9,7 @@ import { getRanking } from "./lib/get_data";
 export default function Home() {
   // Define the initial state for contestants
   const [contestants, setContestants] = useState<Contestant[]>([]);
-  
+
   useEffect(() => {
       const fetchRanking = async () => {
         const con = await getRanking();

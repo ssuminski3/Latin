@@ -3,14 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --font-geist-sans: "Geist Sans", sans-serif;
-  --font-geist-mono: "Geist Mono", monospace;
+    --font-geist-sans: "Geist Sans", sans-serif;
+    --font-geist-mono: "Geist Mono", monospace;
 }
 
 body {
-  font-family: var(--font-geist-sans);
+    font-family: var(--font-geist-sans);
+    background: linear-gradient(360deg, #4b0082 0%, #220022 10%, #000000 100%);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
-
+@media (min-width: 1024px) {
+    body {
+        height: 100vh;
+    }
+}
 
 .bg {
     background: linear-gradient(360deg, #4b0082 0%, #220022 10%, #000000 100%);
@@ -52,7 +59,7 @@ body {
 
 /* When the radio button is checked, add a blue background */
 .contain input:checked~.checkmark {
-    background-color: #166534 ;
+    background-color: #166534;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
