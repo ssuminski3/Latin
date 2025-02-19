@@ -19,18 +19,20 @@ export default function Question({ odpowiedzi, onAnswer, question }: QuestionPro
 
     return (
         <div>
-            <p>{question}</p>
+            <p className='text-3xl'>{question}</p>
             <div className="text-left contain w-full">
                 {odpowiedzi.map((e: string, index: number) => (
-                    <label className="contain m-10" key={e + index}>
-                        <p className="text-xl">{e}</p>
-                        <input 
-                            type="radio" 
-                            name="radio" 
-                            checked={selected === e}
-                            onChange={() => handleChange(e)}
-                        />
-                        <span className="checkmark"></span>
+                    <label className="contain m-5 lg:m-10" key={e + index}>
+                        <div className='flex items-start gap-2'>
+                            <p className="text-xl">{e}</p>
+                            <input 
+                                type="radio" 
+                                name="radio" 
+                                checked={selected === e}
+                                onChange={() => handleChange(e)}
+                            />
+                            <span className="checkmark"></span>
+                        </div>
                     </label>
                 ))}
             </div>

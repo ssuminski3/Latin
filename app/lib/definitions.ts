@@ -1,5 +1,5 @@
 export type Contestant = {
-    name: string;
+    num_people: string;
     score: number;
 };
 export type WordType = {

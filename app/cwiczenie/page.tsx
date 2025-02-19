@@ -56,7 +56,7 @@ export default function Home() {
     return (
         <div className="w-full h-full p-1 m-auto flex justify-center items-center">
             <div className="m-auto text-center w-full max-w-2xl">
-                <div className="max-lg:m-10 text-3xl text-white rounded-3xl p-10 bg-gradient-to-r from-slate-900 to-slate-950">
+                <div className="lg:m-10 md:text-xl lg:text-3xl text-white rounded-3xl p-10 bg-gradient-to-r from-slate-900 to-slate-950">
                     {isLoading ? (
                         <LoadingSpinner />
                     ) : (
@@ -66,7 +66,7 @@ export default function Home() {
                                 (poprawny !== null) ? (
                                     <div>
                                         <p
-                                            className={`p-10 text-2xl min-h-[100px] flex items-center justify-center ${poprawny
+                                            className={`lg:text-2xl md:text-lg lg:max-h-[50px] md:max-h-[100px] flex items-center justify-center ${poprawny
                                                 ? 'text-lime-500'
                                                 : 'text-red-600'
                                                 }`}
@@ -75,9 +75,9 @@ export default function Home() {
                                                 ? "Poprawna odpowiedź"
                                                 : "Zła odpowiedź. Poprawna odpowiedź to: " + goodAns?.latin}
                                         </p>
-                                        <button className="bg-green-800 p-1 m-10 rounded-3xl w-4/6" onClick={() => setNext(!next)}>Dalej</button>
+                                        <button className="bg-green-800 p-1 m-5 rounded-3xl w-4/6 items-center" onClick={() => setNext(!next)}>Dalej</button>
                                     </div>
-                                ) : <button className="bg-green-800 p-1 m-10 rounded-3xl w-4/6" onClick={checkAns}>Sprawdź</button>
+                                ) : <button className="bg-green-800 p-1 m-5 rounded-3xl w-4/6" onClick={checkAns}>Sprawdź</button>
                             }
                         </>
                     )}

@@ -90,7 +90,7 @@ export default function Home() {
   return (
     <div className="w-full h-screen p-10 m-auto flex justify-center items-center">
       <div className="2xl:w-2/5 m-auto text-center">
-        <div className="max-lg:m-10 text-3xl text-white rounded-3xl p-5 bg-gradient-to-r from-slate-900 to-slate-950">
+        <div className="lg:m-10 md:text-xl lg:text-3xl text-white rounded-3xl p-10 bg-gradient-to-r from-slate-900 to-slate-950">
           {isLoading ?
             <LoadingSpinner /> :
             <div>
@@ -103,7 +103,7 @@ export default function Home() {
               {isAnswerChecked ? (
                 <div>
                   <p
-                    className={`p-10 text-2xl min-h-[100px] flex items-center justify-center ${isCorrect ? "text-lime-500" : "text-red-600"
+                    className={`lg:text-2xl md:text-lg lg:max-h-[50px] md:max-h-[100px] flex items-center justify-center ${isCorrect ? "text-lime-500" : "text-red-600"
                       }`}
                   >
                     {isCorrect

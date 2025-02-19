@@ -1,17 +1,15 @@
 "use client";
 import { useScore } from "@/app/context/scoreContext";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { insertNewRanking } from "@/app/lib/get_data";
+import { addOrUpdateRanking } from "@/app/lib/get_data";
 import { useEffect } from "react";
+
 export default function Home() {
     const { score } = useScore();
-    const pathname = usePathname();
-    const name = pathname.split("/")[2];
 
     useEffect(() => {
         const insert = async () => {
-            await insertNewRanking({ score, name });
+            await addOrUpdateRanking(score);
             console.log(name)
         }
         insert()

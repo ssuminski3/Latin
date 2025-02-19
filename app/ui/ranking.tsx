@@ -14,41 +14,17 @@ export default function Ranking({ contestants }: RankingProps) {
   const sortedContestants = [...contestants].sort((a, b) => b.score - a.score);
   const topTen = sortedContestants.slice(0, 10);
 
-  /*useEffect(() => {
-    if (!containerRef.current || !rowRef.current) return;
-
-    const updateMaxItems = () => {
-      const containerHeight = containerRef.current!.getBoundingClientRect().height;
-      const rowHeight = rowRef.current!.getBoundingClientRect().height;
-      if (rowHeight > 0) {
-        // Calculate how many full rows fit inside the container
-        const itemsThatFit = Math.floor(containerHeight / rowHeight);
-        setMaxItems(Math.min(itemsThatFit, 10));
-      }
-    };
-
-    // Initial calculation
-    updateMaxItems();
-
-    // Recalculate when the container size changes
-    const resizeObserver = new ResizeObserver(() => {
-      updateMaxItems();
-    });
-    resizeObserver.observe(containerRef.current);
-
-    window.addEventListener("resize", updateMaxItems);
-
-    return () => {
-      window.removeEventListener("resize", updateMaxItems);
-      resizeObserver.disconnect();
-    };
-  }, [contestants]);*/
-
   return (
     <div
       ref={containerRef}
-      className="w-full h-full text-3xl text-white overflow-hidden"
+      className="w-full h-full text-lg text-white overflow-hidden"
     >
+      <div className="flex justify-between p-1 text-sm">
+        <span className="w-1/3">Miejsce</span>
+        <span className="w-1/3">Wynik</span>
+        <span className="w-1/3">Ososby z tym samym wynikiem</span>
+      </div>
+      <hr className="border-t border-gray-600 my-1" />
       {topTen.slice(0, maxItems).map((contestant, index) => {
         let placeColor = "";
         switch (index) {
@@ -66,11 +42,11 @@ export default function Ranking({ contestants }: RankingProps) {
         }
 
         return (
-          <div key={contestant.name} ref={index === 0 ? rowRef : null}>
-            <div className={`flex justify-between p-1 ${placeColor}`}>
-              <span>{index + 1}.</span>
-              <span>{contestant.name}</span>
-              <span>{contestant.score}</span>
+          <div key={contestant.score} ref={index === 0 ? rowRef : null}>
+            <div className={`flex justify-between p-2 ${placeColor}`}>
+              <span className="w-1/3">{index + 1}.</span>
+              <span className="w-1/3">{contestant.score}</span>
+              <span className="w-1/3">{contestant.num_people}</span>
             </div>
             {index < topTen.slice(0, maxItems).length - 1 && (
               <hr className="border-t border-gray-600 my-1" />
