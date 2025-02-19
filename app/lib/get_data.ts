@@ -1,7 +1,6 @@
 "use server"
 
 import { pool } from "./db"
-import { Contestant } from "./definitions";
 
 export async function getAllWordsRandom(){
     const client = await pool.connect();

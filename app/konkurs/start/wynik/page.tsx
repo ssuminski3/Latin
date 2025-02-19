@@ -10,7 +10,6 @@ export default function Home() {
     useEffect(() => {
         const insert = async () => {
             await addOrUpdateRanking(score);
-            console.log(name)
         }
         insert()
     }, []); // Empty dependency array means it runs only once when component mounts

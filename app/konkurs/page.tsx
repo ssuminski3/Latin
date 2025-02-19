@@ -1,10 +1,8 @@
 "use client"
 
 import Link from "next/link";
-import { useState } from "react";
 
 export default function Home() {
-    const [name, setName] = useState("")
     return (
         <div className="w-full h-full p-10 m-auto flex justify-center items-center ">
             <div className="w-3/5 m-auto text-center">
