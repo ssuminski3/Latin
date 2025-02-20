@@ -3,7 +3,7 @@
 // Import crypto-browserify for browser compatibility
 import crypto from "crypto-browserify";
 
-const SECRET_KEY = process.env.SECRET_KEY;
+const SECRET_KEY = process.env.SECRET_KEY || "my-secret-key"; //shouldn't be on public repository 
 const TOKEN_VALIDITY = 5 * 60; // Token valid for 5 minutes
 
 export async function validateToken(token) {
