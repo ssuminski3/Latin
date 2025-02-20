@@ -27,8 +27,6 @@ export default function Home() {
     const fetchQuestions = async () => {
       const words = await getWordsForCompetition();
       setGoodAns(words);
-      const t = await generateToken(); // Only runs server-side
-      setToken(t);
     };
     fetchQuestions();
   }, []);
@@ -42,6 +40,8 @@ export default function Home() {
         const fillerWords = await getFillerWords(correctLatin);
         const latinWords = fillerWords.map((item: { latin: string; }) => item.latin);
         const options = shuffleArray([...latinWords, correctLatin]);
+        const t = await generateToken(); // Only runs server-side
+        setToken(t);
         setCurrentOptions(options);
         setSelectedAnswer("");
         setIsAnswerChecked(false);
