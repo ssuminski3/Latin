@@ -7,12 +7,11 @@ import { WordType } from "@/app/lib/definitions";
 import { getWordsForCompetition, getFillerWords } from "@/app/lib/get_data";
 import Link from "next/link";
 import { useScore } from "@/app/context/scoreContext";
-import { usePathname } from "next/navigation";
 import LoadingSpinner from "@/app/ui/loadingSpinner";
+import { generateToken } from "@/app/lib/tokenUtils"; // Server function
 
 export default function Home() {
   const { score, setScore } = useScore();
-  const pathname = usePathname();
 
   const [goodAns, setGoodAns] = useState<WordType[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,11 +21,14 @@ export default function Home() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [startTime, setStartTime] = useState(Date.now());
   const [isLoading, setIsLoading] = useState(true);
+  const [token, setToken] = useState<string>()
 
   useEffect(() => {
     const fetchQuestions = async () => {
       const words = await getWordsForCompetition();
       setGoodAns(words);
+      const t = await generateToken(); // Only runs server-side
+      setToken(t);
     };
     fetchQuestions();
   }, []);
@@ -88,8 +90,8 @@ export default function Home() {
   const isLastQuestion = goodAns.length > 0 && currentIndex === goodAns.length - 1;
 
   return (
-    <div className="w-full h-screen p-10 m-auto flex justify-center items-center">
-      <div className="2xl:w-2/5 m-auto text-center">
+    <div className="w-full h-screen p-1 m-auto flex justify-center items-center">
+      <div className="m-auto text-center w-full max-w-2xl">
         <div className="lg:m-10 md:text-xl lg:text-3xl text-white rounded-3xl p-10 bg-gradient-to-r from-slate-900 to-slate-950">
           {isLoading ?
             <LoadingSpinner /> :
@@ -111,7 +113,7 @@ export default function Home() {
                       : `Zła odpowiedź. Poprawna odpowiedź to: ${goodAns[currentIndex].latin}`}
                   </p>
                   {isLastQuestion ? (
-                    <Link href={pathname + "/wynik"}>
+                    <Link href={`/konkurs/start/wynik?token=${token}`}>
                       <button className="bg-green-800 p-1 m-10 rounded-3xl w-4/6">
                         Zakończ
                       </button>

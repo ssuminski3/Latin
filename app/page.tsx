@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className="w-full h-full p-5 flex flex-col xl:flex-row gap-5">
       {/* Panels in a single column */}
-      <div className="flex flex-col gap-8 h-full w-full xl:w-1/3">
+      <div className="flex flex-col lg:gap-8 h-full w-full xl:w-1/3">
         <Panel link="/fiszki">Fiszki</Panel>
         <Panel link="/cwiczenie">Ćwiczenie</Panel>
         <Panel link="/konkurs">Konkurs</Panel>

@@ -78,3 +78,25 @@ export async function addOrUpdateRanking(score: number) {
         client.release();
     }
 }
+export async function getComparison(score: number): Promise<number> {
+    const client = await pool.connect();
+    try {
+        const res = await client.query(
+            `SELECT 
+                (SELECT COALESCE(SUM(num_people), 0) FROM ranking WHERE score <= $1) AS rankCount,
+                (SELECT COALESCE(SUM(num_people), 0) FROM ranking) AS totalCount;`,
+            [score]
+        );
+
+        const { rankcount, totalcount } = res.rows[0];
+        if (totalcount === 0) return 0; // Avoid division by zero
+        const percentage = (rankcount / totalcount) * 100;
+        return Math.round(percentage * 100) / 100;
+    } catch (error) {
+        console.error("Error retrieving ranking percentage:", error);
+        throw error;
+    } finally {
+        client.release();
+    }
+}
+

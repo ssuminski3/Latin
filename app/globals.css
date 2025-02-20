@@ -14,7 +14,7 @@ body {
   background-size: contain;
 }
 
-@media (min-width: 1224px) {
+@media (min-width: 1280px) {
   body {
     height: 100vh;
   }
@@ -23,7 +23,7 @@ body {
 .bg {
   background: linear-gradient(360deg, #4b0082 0%, #220022 10%, #000000 100%);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 
 /* Base styles for each radio option label */
