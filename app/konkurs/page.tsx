@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export default function Home() {
     return (
-        <div className="w-full lg:h-screen sm:p-10 sm:m-auto flex justify-center items-center ">
-            <div className="lg:w-3/5 w-full lg:m-auto text-center">
-                <div className="sm:m-5 text-xl sm:text-3xl text-white rounded-3xl p-10 sm:p-20 bg-gradient-to-r from-slate-900 to-slate-950">
+        <div className="w-full h-screen p-1 m-auto flex justify-center items-center">
+            <div className="m-auto text-center w-full max-w-2xl">
+                <div className="lg:m-10 md:text-xl lg:text-3xl text-white rounded-3xl p-10 bg-gradient-to-r from-slate-900 to-slate-950">
                     <h1 className="text-center text-6xl">Zasady</h1>
                     <ul className="text-left">
                         <li>Im szybciej odpowiesz tym więcej punktów dostaniesz za poprawną odpowiedź.</li>

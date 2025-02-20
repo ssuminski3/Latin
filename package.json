@@ -12,6 +12,7 @@
     "@next/font": "^14.2.15",
     "cookie": "^0.7.0",
     "crypto": "^1.0.1",
+    "crypto-browserify": "^3.12.1",
     "fs": "^0.0.1-security",
     "ip": "^2.0.1",
     "next": "^15.1.7",
