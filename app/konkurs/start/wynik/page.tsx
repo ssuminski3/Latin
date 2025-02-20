@@ -8,7 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { validateToken } from "@/app/lib/tokenUtils"; // Server function
 import LoadingSpinner from "@/app/ui/loadingSpinner";
 
-export default function Home() {
+function Wynik() {
     const { score } = useScore();
     const [percentage, setPercentage] = useState(0);
     const [isValid, setIsValid] = useState(false);
@@ -52,27 +52,33 @@ export default function Home() {
     }, [token, router]);
 
     return (
-        <Suspense fallback={<LoadingSpinner />}>
-            <div className="w-full h-screen p-1 m-auto flex justify-center items-center">
-                <div className="m-auto text-center w-full max-w-2xl">
-                    <div className="lg:m-10 md:text-xl lg:text-3xl text-white rounded-3xl p-10 bg-gradient-to-r from-slate-900 to-slate-950">
-                        {(isValid === false) ? (
-                            <LoadingSpinner />
-                        ) : (
-                            <>
-                                Twój wynik to: <br />
-                                <p className="md:text-9xl text-5xl m-10">{score}</p>
-                                <p>Gratulacje! Masz taki sam lub lepszy wynik niż <b className={getColor(percentage)}>{percentage}%</b> osób, które brały udział</p>
-                                <Link href='/' prefetch={false}>
-                                    <button className="bg-green-800 p-1 m-10 rounded-3xl w-4/6">
-                                        Wróć na stronę główną
-                                    </button>
-                                </Link>
-                            </>
-                        )}
-                    </div>
+        <div className="w-full h-screen p-1 m-auto flex justify-center items-center">
+            <div className="m-auto text-center w-full max-w-2xl">
+                <div className="lg:m-10 md:text-xl lg:text-3xl text-white rounded-3xl p-10 bg-gradient-to-r from-slate-900 to-slate-950">
+                    {(isValid === false) ? (
+                        <LoadingSpinner />
+                    ) : (
+                        <>
+                            Twój wynik to: <br />
+                            <p className="md:text-9xl text-5xl m-10">{score}</p>
+                            <p>Gratulacje! Masz taki sam lub lepszy wynik niż <b className={getColor(percentage)}>{percentage}%</b> osób, które brały udział</p>
+                            <Link href='/' prefetch={false}>
+                                <button className="bg-green-800 p-1 m-10 rounded-3xl w-4/6">
+                                    Wróć na stronę główną
+                                </button>
+                            </Link>
+                        </>
+                    )}
                 </div>
             </div>
-        </Suspense>
+        </div>
     );
+}
+
+export default function Home(){
+    return (
+        <Suspense>
+            <Wynik />
+        </Suspense>
+    )
 }

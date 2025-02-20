@@ -109,7 +109,7 @@ export default function Home() {
                       }`}
                   >
                     {isCorrect
-                      ? `Poprawna odpowiedź! Score: ${score}`
+                      ? `Poprawna odpowiedź! Wynik: ${score}`
                       : `Zła odpowiedź. Poprawna odpowiedź to: ${goodAns[currentIndex].latin}`}
                   </p>
                   {isLastQuestion ? (
