@@ -48,6 +48,17 @@ export async function getWord() {
     }
 }
 
+export async function wordCount() {
+    const client = await pool.connect();
+    try {
+        const { rows } = await client.query('select COUNT(*) from words_to_learn;');
+        console.log(rows)
+        return rows[0].count;
+    } finally {
+        client.release();
+    }
+}
+
 export async function getRanking() {
     const client = await pool.connect();
     try {
